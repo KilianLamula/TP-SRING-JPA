@@ -1,6 +1,5 @@
 package monprojet;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ public class ConsoleApp implements CommandLineRunner {
     private CountryRepository countryDAO;
 
     @Override
-    /**
+    /*
      * Equivalent de la méthode 'main' pour une application Spring Boot
      **/
     public void run(String... args) throws Exception {
@@ -40,9 +39,7 @@ public class ConsoleApp implements CommandLineRunner {
 
         log.info("Recherche par clé");
         Optional<Country> oc = countryDAO.findById(2);
-        oc.ifPresent(c -> {
-            log.info("On a trouvé: {}", c);
-        });
+        oc.ifPresent(c -> log.info("On a trouvé: {}", c));
 
         tapezEnterPourContinuer();
 
