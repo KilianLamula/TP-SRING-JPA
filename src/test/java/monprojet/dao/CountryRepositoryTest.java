@@ -31,7 +31,9 @@ public class CountryRepositoryTest {
     @Test
     public void lesNomsDePaysSontTousDifferents() {
         log.info("On vérifie que les noms de pays sont tous différents ('unique') dans la table 'Country'");
+        
         Country paysQuiExisteDeja = new Country("XX", "France");
+        
         assertThrows(DataIntegrityViolationException.class, () -> {
             countryDAO.save(paysQuiExisteDeja); // On essaye d'enregistrer un pays dont le nom existe
         }, "On doit avoir une violation de contrainte d'intégrité (unicité)");
