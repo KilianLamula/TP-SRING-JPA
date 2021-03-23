@@ -1,5 +1,6 @@
 package monprojet;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class ConsoleApp implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         log.info("On liste tous les enregistrements de la table 'Country'");
-        for (Country c : countryDAO.findAll()) {
+        List<Country> tousLesPays = countryDAO.findAll();
+        for (Country c : tousLesPays) {
             System.out.println(c);
         }
         
@@ -52,8 +54,7 @@ public class ConsoleApp implements CommandLineRunner {
 
         log.info("Modification d'un enregistrement");
         int codeDesUSA = 3;
-        oc = countryDAO.findById(codeDesUSA);
-        Country usa = oc.get(); // Pourrait être null
+        Country usa = countryDAO.findById(codeDesUSA).orElseThrow(); // On lève une exception si pas trouvé
         usa.setName("Etats-Unis d'Amérique");
         countryDAO.save(usa);
 
