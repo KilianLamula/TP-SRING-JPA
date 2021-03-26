@@ -7,7 +7,6 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import monprojet.dao.*;
 import monprojet.entity.*;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.jdbc.Sql;
@@ -33,9 +32,12 @@ public class CountryRepositoryTest {
         log.info("On vérifie que les noms de pays sont tous différents ('unique') dans la table 'Country'");
         
         Country paysQuiExisteDeja = new Country("XX", "France");
-        
-        assertThrows(DataIntegrityViolationException.class, () -> {
-            countryDAO.save(paysQuiExisteDeja); // On essaye d'enregistrer un pays dont le nom existe
-        }, "On doit avoir une violation de contrainte d'intégrité (unicité)");
+        try {
+            countryDAO.save(paysQuiExisteDeja); // On essaye d'enregistrer un pays dont le nom existe   
+
+            fail("On doit avoir une violation de contrainte d'intégrité (unicité)");
+        } catch (DataIntegrityViolationException e) {
+            // Si on arrive ici c'est normal, l'exception attendue s'est produite
+        }
     }
 }
