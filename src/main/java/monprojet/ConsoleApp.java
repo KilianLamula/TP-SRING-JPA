@@ -14,7 +14,7 @@ import monprojet.entity.*;
 @Component
 @Log4j2 // Génère le 'logger' pour afficher les messages de trace
 public class ConsoleApp implements CommandLineRunner {
-    @Autowired
+    @Autowired // Auto-initialisé par Spring
     private CountryRepository countryDAO;
 
     @Override

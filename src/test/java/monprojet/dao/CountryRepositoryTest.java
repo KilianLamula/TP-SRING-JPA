@@ -19,16 +19,7 @@ public class CountryRepositoryTest {
     private CountryRepository countryDAO;
 
     @Test
-    @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
-    public void onSaitCompterLesEnregistrements() {
-        log.info("On compte les enregistrements de la table 'Country'");
-        int combienDePaysDansLeJeuDeTest = 3 + 1; // 3 dans data.sql, 1 dans test-data.sql
-        long nombre = countryDAO.count();
-        assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
-    }
-
-    @Test
-    public void lesNomsDePaysSontTousDifferents() {
+    void lesNomsDePaysSontTousDifferents() {
         log.info("On vérifie que les noms de pays sont tous différents ('unique') dans la table 'Country'");
         
         Country paysQuiExisteDeja = new Country("XX", "France");
@@ -40,4 +31,14 @@ public class CountryRepositoryTest {
             // Si on arrive ici c'est normal, l'exception attendue s'est produite
         }
     }
+
+    @Test
+    @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
+    void onSaitCompterLesEnregistrements() {
+        log.info("On compte les enregistrements de la table 'Country'");
+        int combienDePaysDansLeJeuDeTest = 3 + 1; // 3 dans data.sql, 1 dans test-data.sql
+        long nombre = countryDAO.count();
+        assertEquals(combienDePaysDansLeJeuDeTest, nombre, "On doit trouver 4 pays" );
+    }
+
 }
