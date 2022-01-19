@@ -49,18 +49,7 @@ public class ConsoleApp implements CommandLineRunner {
         log.info("Avant la suppression il y a {} enregistrements", countryDAO.count());
         countryDAO.deleteById(2);
         log.info("Après la suppression il reste {} enregistrements", countryDAO.count());
-
-        tapezEnterPourContinuer();
-
-        log.info("Modification d'un enregistrement");
-        int codeDesUSA = 3;
-        Country usa = countryDAO.getOne(codeDesUSA); 
-        usa.setName("Etats-Unis d'Amérique");
-        countryDAO.save(usa);
-
-        tapezEnterPourContinuer();
-
-    }
+   }
 
     public static void tapezEnterPourContinuer() throws Exception {
         System.out.println("Tapez \"ENTER\" pour continuer...");
