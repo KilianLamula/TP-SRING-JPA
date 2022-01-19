@@ -54,7 +54,7 @@ public class ConsoleApp implements CommandLineRunner {
 
         log.info("Modification d'un enregistrement");
         int codeDesUSA = 3;
-        Country usa = countryDAO.findById(codeDesUSA).orElseThrow(); // On lève une exception si pas trouvé
+        Country usa = countryDAO.getOne(codeDesUSA); 
         usa.setName("Etats-Unis d'Amérique");
         countryDAO.save(usa);
 
