@@ -19,7 +19,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>11</java.version>
+	<java.version>17</java.version>
     </properties>
 
 	<dependencies>
@@ -51,6 +51,8 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		 <version>1.18.22</version>
+		 <type>jar</type>
 		</dependency>
 		<dependency>
         <!-- Test unitaires -->
